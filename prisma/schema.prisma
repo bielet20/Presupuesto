@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Quote {
+  id         String   @id @default(cuid())
+  client     String
+  preparedBy String   @default("Biel Rivero")
+  date       DateTime @default(now())
+  total      Float
+  notes      String?
+  items     QuoteItem[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model QuoteItem {
+  id          String @id @default(cuid())
+  description String
+  quantity    Float
+  price       Float
+  total       Float
+  quoteId     String
+  quote       Quote  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+}
