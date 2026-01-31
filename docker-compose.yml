@@ -1,0 +1,13 @@
+services:
+  budgets-app:
+    build: .
+    container_name: presupuestos-biel
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_URL=file:/app/data/dev.db
+      - NEXT_PUBLIC_BASE_URL=http://localhost:3001
+      - PORT=3001

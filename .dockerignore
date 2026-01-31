@@ -1,0 +1,10 @@
+.next
+node_modules
+.git
+.gitignore
+*.md
+.dockerignore
+docker-compose.yml
+dev.db
+dev.db-journal
+prisma/migrations

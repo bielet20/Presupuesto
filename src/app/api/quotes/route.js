@@ -3,20 +3,25 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
     try {
-        const { client, preparedBy, date, notes, items, total } = await request.json();
+        const { client, preparedBy, date, notes, items, total, companyName, companyAddress, taxRate, showTax } = await request.json();
 
         const quote = await prisma.quote.create({
             data: {
                 client,
                 preparedBy,
+                companyName: companyName || "Servicios de Ingeniería y Desarrollo",
+                companyAddress: companyAddress || "Palma de Mallorca",
                 date: new Date(date),
                 notes,
+                taxRate: parseFloat(taxRate) || 0,
+                showTax: Boolean(showTax),
                 total,
                 items: {
                     create: items.map(item => ({
                         description: item.description,
                         quantity: item.quantity,
                         price: item.price,
+                        taxRate: parseFloat(item.taxRate || 21),
                         total: item.total
                     }))
                 }
