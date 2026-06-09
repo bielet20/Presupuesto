@@ -11,7 +11,7 @@
   "dependencies": {
     "@prisma/adapter-libsql": "^7.3.0",
     "@prisma/client": "^7.3.0",
-    "libsql": "^0.5.22",
+    "libsql": "^0.5.29",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
