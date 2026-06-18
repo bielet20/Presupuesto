@@ -17,7 +17,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "eslint": "^9",
+    "eslint": "^10",
     "eslint-config-next": "16.1.6",
     "prisma": "^7.3.0"
   }
